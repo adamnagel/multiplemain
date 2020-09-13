@@ -12,18 +12,22 @@ from shutil import rmtree
 from setuptools import find_packages, setup, Command
 
 # Package meta-data.
-NAME = 'mypackage'
-DESCRIPTION = 'My short description for my project.'
-URL = 'https://github.com/me/myproject'
-EMAIL = 'me@example.com'
-AUTHOR = 'Awesome Soul'
-REQUIRES_PYTHON = '>=3.6.0'
+NAME = 'multiplemain'
+DESCRIPTION = 'An example Python module with multiple main functions.'
+URL = 'https://github.com/adamnagel/setup.py'
+EMAIL = 'adam.nagel+git@gmail.com'
+AUTHOR = 'Adam Nagel'
+REQUIRES_PYTHON = '>=3.7.0'
 VERSION = '0.1.0'
 
+here = os.path.abspath(os.path.dirname(__file__))
+
 # What packages are required for this module to be executed?
-REQUIRED = [
-    # 'requests', 'maya', 'records',
-]
+try:
+    with io.open(os.path.join(here, 'requirements.txt'), encoding='utf-8') as f:
+        REQUIRED = f.read().split('\n')
+except FileNotFoundError:
+    REQUIRED = []
 
 # What packages are optional?
 EXTRAS = {
@@ -35,7 +39,6 @@ EXTRAS = {
 # Except, perhaps the License and Trove Classifiers!
 # If you do change the License, remember to change the Trove Classifier for that!
 
-here = os.path.abspath(os.path.dirname(__file__))
 
 # Import the README and use it as the long-description.
 # Note: this will only work if 'README.md' is present in your MANIFEST.in file!
@@ -120,7 +123,7 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy'
     ],
